@@ -9,15 +9,15 @@ void main() => runApp(MyApp());
 class MyApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return MyAppState();
+    return _MyAppState();
   }
 }
 
-class MyAppState extends State<MyApp> {
+class _MyAppState extends State<MyApp> {
   var questions = ['How are you?', 'How was your day?'];
   var questionIndex = 0;
 
-  void answerChosen() {
+  void _answerChosen() {
     setState(() {
       if (questionIndex < 1) questionIndex++;
     });
@@ -38,7 +38,7 @@ class MyAppState extends State<MyApp> {
             Text(questions[questionIndex]),
             RaisedButton(
               child: Text('Answer 1'),
-              onPressed: answerChosen,
+              onPressed: _answerChosen,
             ),
             RaisedButton(
               child: Text('Answer 2'),
