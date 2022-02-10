@@ -17,7 +17,24 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var questions = ['How are you?', 'How was your day?'];
+  var questions = [
+    {
+      'questionText': 'What is your fav color?',
+      'answerText': ['Red', 'Indica', 'Purple', 'Black'],
+    },
+    {
+      'questionText': 'What is your fav animal?',
+      'answerText': ['Giraffe', 'Lion', 'Bunny', 'Hippopotamus'],
+    },
+    {
+      'questionText': 'What is your fav food?',
+      'answerText': ['Steak', 'Chicken', 'Burger', 'Fries'],
+    },
+    {
+      'questionText': 'Who is your fav person?',
+      'answerText': ['Ismail', 'Ayon', 'Ismail', 'Ayon'],
+    },
+  ];
   var questionIndex = 0;
 
   void _answerChosen() {
