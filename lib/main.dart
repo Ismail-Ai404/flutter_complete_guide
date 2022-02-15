@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 
 import 'question.dart';
@@ -19,7 +17,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var questions = [
+  final questions = const [
     {
       'questionText': 'What is your fav color?',
       'answerText': ['Red', 'Indica', 'Purple', 'Black'],
@@ -62,18 +60,23 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: Text('Hello world!'),
         ),
-        body: Column(
-          children: [
-            Question(questions[questionIndex]['questionText']),
-            ...(questions[questionIndex]["answerText"] as List<String>)
-                .map((answer) {
-              int count = 3;
-              if (count == 3) count = -1;
-              count++;
-              return Answer(questionNumber[count++], _answerChosen, answer);
-            }).toList(),
-          ],
-        ),
+        body: questionIndex < questions.length
+            ? Column(
+                children: [
+                  Question(questions[questionIndex]['questionText']),
+                  ...(questions[questionIndex]["answerText"] as List<String>)
+                      .map((answer) {
+                    int count = 3;
+                    if (count == 3) count = -1;
+                    count++;
+                    return Answer(
+                        questionNumber[count++], _answerChosen, answer);
+                  }).toList(),
+                ],
+              )
+            : Center(
+                child: Text('You did it!'),
+              ),
       ),
     );
   }
