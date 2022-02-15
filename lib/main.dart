@@ -39,7 +39,7 @@ class _MyAppState extends State<MyApp> {
 
   void _answerChosen() {
     setState(() {
-      if (questionIndex < 3) questionIndex++;
+      if (questionIndex <= questions.length) questionIndex++;
     });
 
     print('Answer chosen!');
