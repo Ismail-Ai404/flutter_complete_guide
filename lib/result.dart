@@ -14,6 +14,7 @@ class Result extends StatelessWidget {
         child: Text(
       ResultScore,
       style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+      textAlign: TextAlign.center,
     ));
   }
 }

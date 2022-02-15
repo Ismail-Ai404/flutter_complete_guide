@@ -7,11 +7,13 @@ class Quiz extends StatelessWidget {
   final Function answerChosen;
   final int questionIndex;
   final List<Map<String, Object>> questions;
+  int count;
 
   Quiz(
       {@required this.answerChosen,
       @required this.questionIndex,
-      @required this.questions});
+      @required this.questions,
+      @required this.count});
 
   @override
   Widget build(BuildContext context) {
@@ -20,10 +22,9 @@ class Quiz extends StatelessWidget {
         Question(questions[questionIndex]['questionText']),
         ...(questions[questionIndex]["answerText"] as List<Map<String, Object>>)
             .map((answer) {
-          int count = 3;
-          if (count == 3) count = -1;
-          count++;
-          return Answer(() => answerChosen(answer['score']), answer['text']);
+          this.count++;
+          return Answer(
+              count, () => answerChosen(answer['score']), answer['text']);
         }).toList(),
       ],
     );

@@ -106,19 +106,18 @@ class _MyAppState extends State<MyApp> {
   ];
   var questionIndex = 0;
   var scoreMain = 0;
+  var count = 0;
 
   void _answerChosen(int scoreFromOne) {
     scoreMain += scoreFromOne;
     setState(() {
-      if (questionIndex <= _questions.length) questionIndex++;
+      if (questionIndex <= _questions.length) {
+        questionIndex++;
+        count = 0;
+      }
     });
 
     print('Answer chosen!');
-  }
-
-  int count() {
-    var c = 0;
-    return c++;
   }
 
   List questionNumber = [1, 2, 3, 4];
@@ -136,6 +135,7 @@ class _MyAppState extends State<MyApp> {
                 answerChosen: _answerChosen,
                 questionIndex: questionIndex,
                 questions: _questions,
+                count: count,
               )
             : Result(scoreMain),
       ),
