@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 import 'question.dart';
@@ -39,11 +41,18 @@ class _MyAppState extends State<MyApp> {
 
   void _answerChosen() {
     setState(() {
-      if (questionIndex < 1) questionIndex++;
+      if (questionIndex < 3) questionIndex++;
     });
 
     print('Answer chosen!');
   }
+
+  int count() {
+    var c = 0;
+    return c++;
+  }
+
+  List questionNumber = [1, 2, 3, 4];
 
   // This widget is the root of your application.
   @override
@@ -55,10 +64,14 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: [
-            Question(questions[questionIndex]),
-            Answer(1, _answerChosen),
-            Answer(2, _answerChosen),
-            Answer(3, _answerChosen),
+            Question(questions[questionIndex]['questionText']),
+            ...(questions[questionIndex]["answerText"] as List<String>)
+                .map((answer) {
+              int count = 3;
+              if (count == 3) count = -1;
+              count++;
+              return Answer(questionNumber[count++], _answerChosen, answer);
+            }).toList(),
           ],
         ),
       ),
