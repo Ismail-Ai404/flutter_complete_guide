@@ -21,24 +21,94 @@ class _MyAppState extends State<MyApp> {
   final _questions = const [
     {
       'questionText': 'What is your fav color?',
-      'answerText': ['Red', 'Indica', 'Purple', 'Black'],
+      'answerText': [
+        {
+          'text': 'Red',
+          'score': 10,
+        },
+        {
+          'text': 'Indica',
+          'score': 5,
+        },
+        {
+          'text': 'Purple',
+          'score': 3,
+        },
+        {
+          'text': 'Black',
+          'score': 2,
+        }
+      ],
     },
     {
       'questionText': 'What is your fav animal?',
-      'answerText': ['Giraffe', 'Lion', 'Bunny', 'Hippopotamus'],
+      'answerText': [
+        {
+          'text': 'Bunny',
+          'score': 10,
+        },
+        {
+          'text': 'Ziraffe',
+          'score': 5,
+        },
+        {
+          'text': 'Kangaroo',
+          'score': 3,
+        },
+        {
+          'text': 'Lion',
+          'score': 2,
+        }
+      ],
     },
     {
       'questionText': 'What is your fav food?',
-      'answerText': ['Steak', 'Chicken', 'Burger', 'Fries'],
+      'answerText': [
+        {
+          'text': 'Steak',
+          'score': 10,
+        },
+        {
+          'text': 'Chicken',
+          'score': 5,
+        },
+        {
+          'text': 'Goat',
+          'score': 3,
+        },
+        {
+          'text': 'Fish',
+          'score': 2,
+        }
+      ],
     },
     {
       'questionText': 'Who is your fav person?',
-      'answerText': ['Ismail', 'Ayon', 'Ismail', 'Ayon'],
+      'answerText': [
+        {
+          'text': 'Ismail',
+          'score': 10,
+        },
+        {
+          'text': 'Ayon',
+          'score': 10,
+        },
+        {
+          'text': 'Ismail',
+          'score': 10,
+        },
+        {
+          'text': 'Ayon',
+          'score': 10,
+        }
+      ],
     },
   ];
   var questionIndex = 0;
+  var scoreMain = 0;
 
-  void _answerChosen() {
+  void _answerChosen(int scoreFromOne) {
+    scoreMain += scoreFromOne;
     setState(() {
       if (questionIndex <= _questions.length) questionIndex++;
     });
