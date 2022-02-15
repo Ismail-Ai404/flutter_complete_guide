@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_complete_guide/quiz.dart';
 
-import 'question.dart';
-import 'answer.dart';
+import 'quiz.dart';
+import 'result.dart';
 
 // !!void main() {
 //   runApp(MyApp());
@@ -17,7 +18,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final questions = const [
+  final _questions = const [
     {
       'questionText': 'What is your fav color?',
       'answerText': ['Red', 'Indica', 'Purple', 'Black'],
@@ -39,7 +40,7 @@ class _MyAppState extends State<MyApp> {
 
   void _answerChosen() {
     setState(() {
-      if (questionIndex <= questions.length) questionIndex++;
+      if (questionIndex <= _questions.length) questionIndex++;
     });
 
     print('Answer chosen!');
@@ -60,23 +61,13 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: Text('Hello world!'),
         ),
-        body: questionIndex < questions.length
-            ? Column(
-                children: [
-                  Question(questions[questionIndex]['questionText']),
-                  ...(questions[questionIndex]["answerText"] as List<String>)
-                      .map((answer) {
-                    int count = 3;
-                    if (count == 3) count = -1;
-                    count++;
-                    return Answer(
-                        questionNumber[count++], _answerChosen, answer);
-                  }).toList(),
-                ],
+        body: questionIndex < _questions.length
+            ? Quiz(
+                answerChosen: _answerChosen,
+                questionIndex: questionIndex,
+                questions: _questions,
               )
-            : Center(
-                child: Text('You did it!'),
-              ),
+            : Result(),
       ),
     );
   }
