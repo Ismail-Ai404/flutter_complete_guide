@@ -19,10 +19,12 @@ class Result extends StatelessWidget {
           style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
           textAlign: TextAlign.center,
         ),
-        FlatButton(
+        OutlinedButton(
+          style: OutlinedButton.styleFrom(
+              primary: Colors.brown[400],
+              side: BorderSide(color: Colors.black87)),
           onPressed: resetquiz,
           child: Text('Reset Quiz'),
-          textColor: Colors.blue,
         )
       ],
     ));

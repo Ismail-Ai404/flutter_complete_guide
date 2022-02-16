@@ -13,6 +13,8 @@ class Answer extends StatelessWidget {
     return Container(
       width: double.infinity,
       child: ElevatedButton(
+        style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(Colors.black)),
         child: Text('$count. $question'),
         onPressed: _direct,
       ),
