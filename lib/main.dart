@@ -107,6 +107,13 @@ class _MyAppState extends State<MyApp> {
   var questionIndex = 0;
   var scoreMain = 0;
   var count = 0;
+  void _resetQuiz() {
+    setState(() {
+      questionIndex = 0;
+      scoreMain = 0;
+      count = 0;
+    });
+  }
 
   void _answerChosen(int scoreFromOne) {
     scoreMain += scoreFromOne;
@@ -137,7 +144,7 @@ class _MyAppState extends State<MyApp> {
                 questions: _questions,
                 count: count,
               )
-            : Result(scoreMain),
+            : Result(scoreMain, _resetQuiz),
       ),
     );
   }
